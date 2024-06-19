@@ -47,7 +47,7 @@ const Profile = () => {
   return (
     <div className="p-3 max-w-6xl mx-auto">
       <h1 className="text-3xl text-center font-semibold my-7">Profile</h1>
-      <form className="flex flex-col gap-4">
+      <form className="flex flex-col gap-4 max-w-xl mx-auto">
         <input
           type="file"
           accept="image/*"
@@ -96,7 +96,7 @@ const Profile = () => {
           UPDATE
         </button>
       </form>
-      <div className="flex justify-between items-center mt-4">
+      <div className="flex justify-between items-center mt-4 max-w-xl mx-auto">
         <span className="text-red-600">Delete Account</span>
         <span className="text-red-600">Sign out</span>
       </div>
