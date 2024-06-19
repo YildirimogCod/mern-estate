@@ -19,6 +19,7 @@ import {
   updateUserStart,
   updateUserSuccess,
 } from "../redux/user/userSlice";
+import { Link } from "react-router-dom";
 const Profile = () => {
   const { currentUser, loading, error } = useSelector((state) => state.user);
   const [file, setFile] = useState(undefined);
@@ -179,6 +180,12 @@ const Profile = () => {
         >
           {loading ? "Loading..." : "Update"}
         </button>
+        <Link
+          to="/create-listing"
+          className="bg-green-600 text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80 text-center"
+        >
+          Create Listing
+        </Link>
       </form>
       <div className="flex justify-between items-center mt-4 max-w-xl mx-auto">
         <button onClick={handleDeleteUser}>
