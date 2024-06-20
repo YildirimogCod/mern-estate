@@ -15,8 +15,6 @@ import {
   deleteUserStart,
   deleteUserSuccess,
   signOutUserStart,
-  signOutUserFailure,
-  signOutUserSuccess,
 } from "../redux/user/userSlice";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
@@ -31,6 +29,12 @@ export default function Profile() {
   const [showListingsError, setShowListingsError] = useState(false);
   const [userListings, setUserListings] = useState([]);
   const dispatch = useDispatch();
+
+  // firebase storage
+  // allow read;
+  // allow write: if
+  // request.resource.size < 2 * 1024 * 1024 &&
+  // request.resource.contentType.matches('image/.*')
 
   useEffect(() => {
     if (file) {
@@ -113,12 +117,12 @@ export default function Profile() {
       const res = await fetch("/api/auth/signout");
       const data = await res.json();
       if (data.success === false) {
-        dispatch(signOutUserFailure(data.message));
+        dispatch(deleteUserFailure(data.message));
         return;
       }
-      dispatch(signOutUserSuccess(data));
+      dispatch(deleteUserSuccess(data));
     } catch (error) {
-      dispatch(signOutUserFailure());
+      dispatch(deleteUserFailure(data.message));
     }
   };
 
